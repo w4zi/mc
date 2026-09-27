@@ -28,8 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
     youtube: YOUTUBE_URL,
   };
 
-  document.querySelectorAll("[data-external]").forEach((el) => {
-    const key = el.getAttribute("data-external");
+  document.querySelectorAll("[data-card-link]").forEach((el) => {
+    const key = el.getAttribute("data-card-link");
+    if (key !== "discord" && key !== "youtube") return;
     const url = externalUrls[key];
     if (el.tagName === "A") el.setAttribute("href", url);
 
@@ -41,62 +42,78 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------------- Mobile menu ---------------- */
   const menuToggle = document.getElementById("menuToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileNav = document.getElementById("mobileNav");
 
   function closeMobileMenu() {
-    mobileMenu.classList.remove("open");
+    mobileNav.classList.remove("open");
     menuToggle.setAttribute("aria-expanded", "false");
   }
 
   menuToggle.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.toggle("open");
+    const isOpen = mobileNav.classList.toggle("open");
     menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
-  mobileMenu.querySelectorAll("a, button").forEach((el) => {
+  mobileNav.querySelectorAll("a").forEach((el) => {
     el.addEventListener("click", closeMobileMenu);
   });
 
+  // close mobile menu when tapping outside
+  document.addEventListener("click", (e) => {
+    if (
+      mobileNav.classList.contains("open") &&
+      !mobileNav.contains(e.target) &&
+      !menuToggle.contains(e.target)
+    ) {
+      closeMobileMenu();
+    }
+  });
+
   /* ---------------- PS99 Modal ---------------- */
+  const ps99Overlay = document.getElementById("ps99Overlay");
   const ps99Modal = document.getElementById("ps99Modal");
-  const modalClose = document.getElementById("modalClose");
+  const ps99Close = document.getElementById("ps99Close");
   const copyBtn = document.getElementById("copyBtn");
-  const scriptCode = document.getElementById("scriptCode");
-  scriptCode.textContent = PS99_SCRIPT;
+  const ps99Code = document.getElementById("ps99Code");
+  ps99Code.textContent = PS99_SCRIPT;
 
   let lastFocusedElement = null;
 
   function openModal() {
     lastFocusedElement = document.activeElement;
-    ps99Modal.classList.add("open");
-    ps99Modal.setAttribute("aria-hidden", "false");
+    ps99Overlay.hidden = false;
+    // force a reflow so the transition runs
+    void ps99Overlay.offsetWidth;
+    ps99Overlay.classList.add("open");
     document.body.style.overflow = "hidden";
     closeMobileMenu();
-    window.setTimeout(() => modalClose.focus(), 50);
+    window.setTimeout(() => ps99Close.focus(), 50);
   }
 
   function closeModal() {
-    ps99Modal.classList.remove("open");
-    ps99Modal.setAttribute("aria-hidden", "true");
+    ps99Overlay.classList.remove("open");
     document.body.style.overflow = "";
-    if (lastFocusedElement) lastFocusedElement.focus();
+    window.setTimeout(() => {
+      ps99Overlay.hidden = true;
+      if (lastFocusedElement) lastFocusedElement.focus();
+    }, 350);
   }
 
-  document.querySelectorAll("[data-open-modal='ps99']").forEach((el) => {
+  document.querySelectorAll("[data-card-link='ps99']").forEach((el) => {
     el.addEventListener("click", (e) => {
       e.preventDefault();
       openModal();
     });
   });
 
-  modalClose.addEventListener("click", closeModal);
+  ps99Close.addEventListener("click", closeModal);
 
-  ps99Modal.addEventListener("click", (e) => {
-    if (e.target === ps99Modal) closeModal();
+  ps99Overlay.addEventListener("click", (e) => {
+    if (e.target === ps99Overlay) closeModal();
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && ps99Modal.classList.contains("open")) {
+    if (e.key === "Escape" && ps99Overlay.classList.contains("open")) {
       closeModal();
     }
   });
@@ -177,18 +194,19 @@ function initParticles(canvas) {
   const DENSITY = 14000; // px^2 per particle
 
   function resize() {
-    width = canvas.width = canvas.offsetWidth * devicePixelRatio;
-    height = canvas.height = canvas.offsetHeight * devicePixelRatio;
-    const count = Math.min(70, Math.floor((width * height) / (DENSITY * devicePixelRatio * devicePixelRatio)));
-    particles = Array.from({ length: count }, () => createParticle());
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = canvas.width = canvas.offsetWidth * dpr;
+    height = canvas.height = canvas.offsetHeight * dpr;
+    const count = Math.min(70, Math.floor((canvas.offsetWidth * canvas.offsetHeight) / DENSITY));
+    particles = Array.from({ length: count }, () => createParticle(dpr));
   }
 
-  function createParticle() {
+  function createParticle(dpr) {
     return {
       x: Math.random() * width,
       y: Math.random() * height,
-      r: (Math.random() * 1.2 + 0.4) * devicePixelRatio,
-      vy: (Math.random() * 0.12 + 0.03) * devicePixelRatio,
+      r: (Math.random() * 1.2 + 0.4) * dpr,
+      vy: (Math.random() * 0.12 + 0.03) * dpr,
       alpha: Math.random() * 0.35 + 0.08,
     };
   }
