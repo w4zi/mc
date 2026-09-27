@@ -315,17 +315,15 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
    ========================================================== */
 .hero {
   position: relative;
-  min-height: calc(100svh - var(--header-h));
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 24px;
+  padding: 60px 24px 30px;
 }
 
 @media (max-width: 720px) {
   .hero {
-    min-height: auto;
-    padding: 60px 20px 24px;
+    padding: 40px 20px 16px;
   }
 }
 
@@ -338,11 +336,13 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
 }
 
 .hero-eyebrow {
-  margin: 18px 0 0;
+  margin: 16px 0 0;
   font-size: clamp(1rem, 2.6vw, 1.2rem);
   font-weight: 500;
   color: var(--text-secondary);
   font-family: var(--font-display);
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .hero-title {
@@ -381,7 +381,7 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
 }
 
 @media (max-width: 720px) {
-  .cards-section { padding: 0 16px 80px; margin-top: -10px; }
+  .cards-section { padding: 0 16px 80px; }
 }
 
 .cards-grid {
@@ -680,7 +680,7 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
   :root { --header-h: 60px; }
   .header-inner { padding: 0 16px; }
   .brand-name { font-size: 1rem; }
-  .hero { padding: 48px 16px 20px; }
+  .hero { padding: 32px 16px 12px; }
   .hero-title { font-size: clamp(2.6rem, 12vw, 3.4rem); }
   .modal-overlay { padding: 16px; }
   .modal { padding: 24px 18px; }
