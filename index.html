@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MocoScripts</title>
+<meta name="description" content="MocoScripts — clean, reliable Roblox scripts. Grab the PS99 script, join the Discord, and watch on YouTube.">
+
+<meta property="og:title" content="MocoScripts">
+<meta property="og:description" content="Simple. Clean. Powerful. Your hub for MocoScripts.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/logo.png">
+
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== INTRO / WELCOME ANIMATION ===== -->
+<div id="intro" aria-hidden="true">
+  <div class="intro-glow"></div>
+  <div class="intro-content">
+    <img src="assets/logo.png" alt="" class="intro-logo" draggable="false">
+    <span class="intro-word">MocoScripts</span>
+  </div>
+</div>
+
+<!-- ===== BACKGROUND LAYERS ===== -->
+<div class="bg-layer" aria-hidden="true">
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-grid"></div>
+  <canvas id="particles"></canvas>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="#top" class="brand" aria-label="MocoScripts home">
+      <img src="assets/logo.png" alt="MocoScripts logo" class="brand-logo">
+      <span class="brand-name">MocoScripts</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <a href="#ps99" data-card-link="ps99">PS99</a>
+      <a href="#discord" data-card-link="discord">Discord</a>
+      <a href="#youtube" data-card-link="youtube">YouTube</a>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <a href="#ps99" data-card-link="ps99">PS99</a>
+    <a href="#discord" data-card-link="discord">Discord</a>
+    <a href="#youtube" data-card-link="youtube">YouTube</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <p class="hero-eyebrow">Roblox scripting, done right</p>
+    <h1 class="hero-title">MocoScripts</h1>
+    <p class="hero-subtitle">Simple. Clean. Powerful.</p>
+    <p class="hero-desc">Your hub for MocoScripts.</p>
+  </section>
+
+  <!-- ===== CARDS ===== -->
+  <section class="cards" aria-label="MocoScripts links">
+
+    <button class="card" id="ps99" data-card-link="ps99" aria-haspopup="dialog" aria-controls="ps99Modal">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </div>
+      <h2 class="card-title">PS99</h2>
+      <p class="card-desc">Get the current PS99 script, ready to run.</p>
+      <span class="card-arrow" aria-hidden="true">→</span>
+    </button>
+
+    <a class="card" id="discord" data-card-link="discord" href="#" rel="noopener">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.317 4.369A19.79 19.79 0 0 0 15.885 3a13.6 13.6 0 0 0-.617 1.25 18.3 18.3 0 0 0-5.487 0A13.6 13.6 0 0 0 9.164 3a19.74 19.74 0 0 0-4.435 1.372C1.685 8.043 .965 11.62 1.226 15.147a19.9 19.9 0 0 0 5.993 3.03 14.7 14.7 0 0 0 1.283-2.08 12.9 12.9 0 0 1-2.021-.97c.17-.124.336-.253.497-.386 3.899 1.804 8.126 1.804 11.98 0 .162.133.328.262.497.386-.642.385-1.32.71-2.023.971a14.6 14.6 0 0 0 1.284 2.079 19.85 19.85 0 0 0 6-3.03c.307-4.09-.639-7.635-2.399-11.778ZM8.9 12.956c-1.17 0-2.13-1.075-2.13-2.396 0-1.32.94-2.397 2.13-2.397 1.199 0 2.15 1.086 2.13 2.397 0 1.32-.94 2.396-2.13 2.396Zm6.216 0c-1.17 0-2.129-1.075-2.129-2.396 0-1.32.94-2.397 2.129-2.397 1.199 0 2.15 1.086 2.13 2.397 0 1.32-.931 2.396-2.13 2.396Z"/>
+        </svg>
+      </div>
+      <h2 class="card-title">Discord</h2>
+      <p class="card-desc">Join the community, get updates and support.</p>
+      <span class="card-arrow" aria-hidden="true">→</span>
+    </a>
+
+    <a class="card" id="youtube" data-card-link="youtube" href="#" rel="noopener">
+      <div class="card-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.02 3.02 0 0 0-2.126-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.372.55A3.02 3.02 0 0 0 .502 6.186 31.7 31.7 0 0 0 0 12a31.7 31.7 0 0 0 .502 5.814 3.02 3.02 0 0 0 2.126 2.136C4.495 20.5 12 20.5 12 20.5s7.505 0 9.372-.55a3.02 3.02 0 0 0 2.126-2.136A31.7 31.7 0 0 0 24 12a31.7 31.7 0 0 0-.502-5.814ZM9.75 15.568V8.432L15.818 12 9.75 15.568Z"/>
+        </svg>
+      </div>
+      <h2 class="card-title">YouTube</h2>
+      <p class="card-desc">Watch showcases, tutorials, and script demos.</p>
+      <span class="card-arrow" aria-hidden="true">→</span>
+    </a>
+
+  </section>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> MocoScripts. Not affiliated with Roblox Corporation.</p>
+  </footer>
+
+</main>
+
+<!-- ===== PS99 MODAL ===== -->
+<div class="modal-overlay" id="ps99Overlay" hidden>
+  <div class="modal" id="ps99Modal" role="dialog" aria-modal="true" aria-labelledby="ps99Title">
+    <button class="modal-close" id="ps99Close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+    <h2 id="ps99Title" class="modal-title">PS99 Script</h2>
+    <p class="modal-subtitle">Paste this into your executor.</p>
+
+    <div class="code-block">
+      <pre><code id="ps99Code">loadstring(game:HttpGet("https://w4zi.github.io/wz/ps99.lua"))()</code></pre>
+    </div>
+
+    <button class="copy-btn" id="copyBtn">
+      <span class="copy-btn-label">Copy Script</span>
+    </button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
