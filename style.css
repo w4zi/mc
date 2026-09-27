@@ -322,20 +322,27 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
   padding: 60px 24px;
 }
 
+@media (max-width: 720px) {
+  .hero {
+    min-height: auto;
+    padding: 70px 20px 50px;
+  }
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
   text-align: center;
   max-width: 640px;
+  width: 100%;
 }
 
 .hero-eyebrow {
-  margin: 0 0 18px;
-  font-size: 0.82rem;
+  margin: 18px 0 0;
+  font-size: clamp(1rem, 2.6vw, 1.2rem);
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--pink-soft);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
 }
 
 .hero-title {
@@ -351,10 +358,10 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
 }
 
 .hero-subtitle {
-  margin: 20px 0 0;
-  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  margin: 10px 0 0;
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--pink-soft);
   font-family: var(--font-display);
 }
 
@@ -371,6 +378,10 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
   position: relative;
   z-index: 1;
   padding: 20px 24px 120px;
+}
+
+@media (max-width: 720px) {
+  .cards-section { padding: 0 16px 80px; }
 }
 
 .cards-grid {
@@ -650,6 +661,17 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
 }
 
 @media (max-width: 720px) {
+  .cards-grid { max-width: 100%; gap: 14px; }
+  .card {
+    width: 100%;
+    padding: 22px 20px;
+    gap: 10px;
+  }
+  .card-icon { width: 40px; height: 40px; }
+  .card-title { font-size: 1.15rem; }
+}
+
+@media (max-width: 720px) {
   .nav-desktop { display: none; }
   .menu-toggle { display: flex; }
 }
@@ -658,10 +680,9 @@ h1, h2, h3 { font-family: var(--font-display); margin: 0; }
   :root { --header-h: 60px; }
   .header-inner { padding: 0 16px; }
   .brand-name { font-size: 1rem; }
-  .hero { padding: 40px 16px; }
-  .cards-section { padding: 10px 16px 80px; }
-  .card { padding: 24px 20px; }
+  .hero { padding: 56px 16px 40px; }
+  .hero-title { font-size: clamp(2.6rem, 12vw, 3.4rem); }
   .modal-overlay { padding: 16px; }
   .modal { padding: 24px 18px; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
-   }
+}
