@@ -2,8 +2,8 @@
    MocoScripts — configuration
    Replace these with your real links.
    ========================================================== */
-const DISCORD_URL = "YOUR_DISCORD_INVITE_HERE";
-const YOUTUBE_URL = "YOUR_YOUTUBE_CHANNEL_HERE";
+const DISCORD_URL = "https://discord.gg/A4hNVkW5z5";
+const YOUTUBE_URL = "https://youtube.com/@mocoscripts?si=-4oC6ZeR0HV9iF5X";
 
 const PS99_SCRIPT = 'loadstring(game:HttpGet("https://w4zi.github.io/wz/ps99.lua"))()';
 
