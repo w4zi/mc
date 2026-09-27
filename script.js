@@ -232,4 +232,4 @@ function initParticles(canvas) {
   resize();
   window.addEventListener("resize", resize);
   requestAnimationFrame(tick);
-}
+                          }
